@@ -1,0 +1,6 @@
+- name: Kontrolli, kas kõik masinad vastavad
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Kontrolli masinate ühendust
+      ping:

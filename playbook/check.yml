@@ -1,0 +1,25 @@
+- name: Kontrolli, kas vajalik tarkvara on paigaldatud
+  hosts: all
+  tasks:
+    - name: Kontrolli, kas nginx on paigaldatud (Linuxi masinad)
+      command: which nginx
+      register: nginx_check
+      ignore_errors: yes
+      when: ansible_os_family == "Debian" or ansible_os_family == "RedHat"
+
+    - name: Kontrolli, kas nginx on paigaldatud (tulemus)
+      debug:
+        msg: "Nginx on paigaldatud masinale: {{ inventory_hostname }}"
+      when: nginx_check.rc == 0
+
+    - name: Kontrolli, kas git on paigaldatud
+      command: which git
+      register: git_check
+      ignore_errors: yes
+      when: ansible_os_family == "Debian" or ansible_os_family == "RedHat"
+
+    - name: Kontrolli, kas curl on paigaldatud
+      command: which curl
+      register: curl_check
+      ignore_errors: yes
+      when: ansible_os_family == "Debian" or ansible_os_family == "RedHat"

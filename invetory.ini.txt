@@ -1,0 +1,18 @@
+all:
+  children:
+    LinuxiServerid:
+      children:
+        Ubuntu:
+          hosts:
+            ubuntu1:
+              ansible_host: 10.10.10.130
+            ubuntu2:
+              ansible_host: 10.10.10.132 
+        RedHat:
+          hosts:
+            redhat1:
+              ansible_host: 10.10.10.133    
+    OpenSUSE:
+          hosts:
+            opensuse1:
+              ansible_host: 10.10.10.134
